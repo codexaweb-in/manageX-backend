@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Migrations (optional)
+# Uncomment if you don't want to track migrations
+# */migrations/*
+# !*/migrations/__init__.py
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Redis Dumps
+dump.rdb
+
+# Elasticsearch
+.elasticsearch/
+esdata/
+
+# Docker
+docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+
+# Temporary Files
+tmp/
+temp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+secrets.json
+credentials.json
+
+# Node (if frontend included)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Static Collected Files
+static/
+
+# Media Uploads
+uploads/
