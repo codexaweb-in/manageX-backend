@@ -5,11 +5,41 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
-from .serializers import UserSerializer, LoginSerializer
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
+from .serializers import UserSerializer, LoginSerializer, RegisterSerializer
 from .services import UserPermissionService, PlanLimitService
+from rest_framework.pagination import PageNumberPagination
+from rest_framework import status
+
+
+
+
+class StandardResultSetPagination(PageNumberPagination):
+    page_size = 10
+    page_query_param = "page_size"
+    max_page_size = 30
+
+
+
+class RegisterView(APIView):
+
+    def post(self, request):
+
+        serializer = RegisterSerializer(
+            data=request.data
+        )
+
+        serializer.is_valid(
+            raise_exception=True
+        )
+
+        serializer.save()
+
+        return Response(
+            {
+                "message": "Registration successful"
+            },
+            status=status.HTTP_201_CREATED
+        )
 
 
 class UserViewSet(ModelViewSet):
@@ -43,7 +73,7 @@ class UserViewSet(ModelViewSet):
             organization=request_user.organization
         )
 
-
+ 
 class LoginView(APIView):
 
     def post(self, request):

@@ -4,17 +4,20 @@ from .models import Organization
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
+
     list_display = (
         "id",
         "name",
-        "email",
+        "gst_number",
         "phone",
+        "email",
         "plan",
-        "is_active",
+        "is_active"
     )
 
     search_fields = (
         "name",
+        "gst_number",
         "email",
-        "phone",
+        "phone"
     )

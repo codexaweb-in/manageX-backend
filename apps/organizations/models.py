@@ -1,8 +1,17 @@
 from django.db import models
 
-
 class Organization(models.Model):
     name = models.CharField(max_length=255)
+
+    gst_number = models.CharField(
+        max_length=15,
+        unique=True
+    )
+
+    pan_number = models.CharField(
+        max_length=10,
+        blank=True
+    )
 
     email = models.EmailField(unique=True)
 
@@ -11,14 +20,20 @@ class Organization(models.Model):
         unique=True
     )
 
+    address = models.TextField(blank=True)
+
+    business_type = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
     plan = models.ForeignKey(
         "subscriptions.Plan",
-        on_delete=models.PROTECT,
-        related_name="organizations"
+        on_delete=models.PROTECT
     )
 
     is_active = models.BooleanField(
-        default=True
+        default=False
     )
 
     email_verified = models.BooleanField(
@@ -32,10 +47,3 @@ class Organization(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True
     )
-
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
-
-    def __str__(self):
-        return self.name
