@@ -12,7 +12,24 @@ urlpatterns = [
         include("apps.subscriptions.urls")
     ),
     path(
-    "api/v1/accounts/",
-    include("apps.accounts.urls")
+        "api/v1/accounts/",
+        include("apps.accounts.urls")
+    ),
+    path(
+        "api/v1/auth/",
+        include("apps.authentication.urls")
+    ),
+
+    path(
+        "api/v1/",
+        include("apps.employees.urls")
+    ),
+    path(
+        "api/v1/attendance/",
+        include("apps.attendance.urls")
+    ),
+    path(
+        "api/v1/crm/",
+        include("apps.crm.urls")
     ),
 ]

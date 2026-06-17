@@ -5,7 +5,8 @@ class Organization(models.Model):
 
     gst_number = models.CharField(
         max_length=15,
-        unique=True
+        unique=True,
+        blank=True
     )
 
     pan_number = models.CharField(
@@ -17,7 +18,8 @@ class Organization(models.Model):
 
     phone = models.CharField(
         max_length=15,
-        unique=True
+        unique=True,
+        blank=True
     )
 
     address = models.TextField(blank=True)

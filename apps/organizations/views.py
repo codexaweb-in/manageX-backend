@@ -7,6 +7,16 @@ from .serializers import OrganizationSerializer
 
 class OrganizationViewSet(ModelViewSet):
 
-    queryset = Organization.objects.all()
     serializer_class = OrganizationSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        user = self.request.user
+
+        if user.role == "SUPER_ADMIN":
+            return Organization.objects.all()
+
+        return Organization.objects.filter(
+            id=user.organization_id
+        )

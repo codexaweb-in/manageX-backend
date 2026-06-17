@@ -28,6 +28,10 @@ INSTALLED_APPS = [
     'apps.accounting',
     'apps.reports',
     'apps.subscriptions',
+    'apps.payroll',
+    'apps.payslips',
+    'apps.attendance',
+    'apps.authentication',
 
 ]
 
